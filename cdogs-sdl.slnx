@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="bc71c956-30c3-3dc1-8bac-4a194c9d11aa" DefaultStartup="true">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/tests/actor_test.vcxproj"/>
+		<BuildDependency Project="src/tests/animated_counter_test.vcxproj"/>
+		<BuildDependency Project="src/tests/autosave_test.vcxproj"/>
+		<BuildDependency Project="src/tests/c_array_test.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/c_hashmap_test.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/cdogs-sdl.vcxproj"/>
+		<BuildDependency Project="src/cdogs-sdl-editor.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogsed/cdogsedlib.vcxproj"/>
+		<BuildDependency Project="src/tests/color_test.vcxproj"/>
+		<BuildDependency Project="src/tests/config_test.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/tests/json_test.vcxproj"/>
+		<BuildDependency Project="src/tests/minkowski_hex_test.vcxproj"/>
+		<BuildDependency Project="src/tests/pic_test.vcxproj"/>
+		<BuildDependency Project="src/tests/player_test.vcxproj"/>
+		<BuildDependency Project="src/tests/utils_test.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/tests/yajl_test.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="Continuous.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9dcde753-73dc-3df8-a93f-a6f6e08fdb10">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="Experimental.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="83bb0543-c39a-38be-b92d-7a3a5d51aac6">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a1fbb377-3be0-37a0-be52-79a0816d6e48">
+		<BuildDependency Project="ALL_BUILD.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="Nightly.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f8b58935-85bb-3178-ac39-eac5a447fee7">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="NightlyMemoryCheck.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="115b994f-fa7b-3775-8fa6-c98a6050b3ee">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="PACKAGE.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f65f7dc0-2354-31f9-8bc7-7d78e06d8cdd">
+		<BuildDependency Project="ALL_BUILD.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="RUN_TESTS.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c6d91240-97b8-3dc9-a700-13313d67e24b">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="692a9943-e6b4-3c17-ba70-340f9a559d0d">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8e7f8e94-cf51-3554-ab11-56ad9669c9c8"/>
+	<Project Path="src/tests/actor_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a0bc649e-e453-399c-8232-d5b6e0e4e68f">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/animated_counter_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9f43c620-579f-3087-8439-505025b32d4e">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/autosave_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="282aa9c0-525a-3ec2-990d-d10556817bca">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/c_array_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="ce00ca45-97d2-3f81-98a0-70eea8be969d">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/c_hashmap/c_hashmap.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="64e82f44-de90-3aa2-8cbd-45ad6d984483">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/c_hashmap_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="be242870-5153-3fdb-9b3f-7a22da310af9">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/cbehave/cbehave.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7e75d6d2-0413-3a06-b515-9746c8818b8f">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/cdogs.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8cfd3931-a582-3378-bbc4-4f7919509c6e">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs-sdl.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="38f67569-abaf-3f09-966d-31c251b035c8">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs-sdl-editor.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="46dd073b-627e-3764-b4a4-a8a43ec7e3af">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogsed/cdogsedlib.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/proto/cdogs_proto.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="af5c6751-5bba-3e4c-9590-2a807e57e643">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogsed/cdogsedlib.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fa87494c-7ad0-3f3d-8aac-b4f5b0c3766d">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/color_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d4b29d56-3487-3090-9999-b85c72b61b73">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/config_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="22b10ea4-a7a3-32d7-8e64-a43feafe4c3d">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/cwolfmap/cwolfmap.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3b76e408-78bd-3560-ab06-4d8b3a76e71e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/enet/enet.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="bf714ce9-baf7-3f82-8d64-0d4b210acd58">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/json/json.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="da23f9a6-d918-3c66-b344-63c3fb8a1323">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/json_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0707d9bf-18b4-374a-9733-99347c9041ef">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/minkowski_hex_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="dad4d283-7a91-3b33-8c3a-deac53e05348">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/pic_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a7aa17da-a4d4-3d0d-b749-d615c8a39adc">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/player_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0f94e0d8-880c-3cb3-bb0e-052a397b1483">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/utils_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c1981816-a59b-32a5-859b-cce0b23e27a8">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/proto/cdogs_proto.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/cwolfmap/wad/wad.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c53be6f6-cb20-30cc-b5ec-6276cc357b11">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/yajl/yajl.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7edc4b7b-83c8-30b5-84a1-abb1d649aaed">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/yajl/yajl_s.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7b836308-a64d-365d-839e-dc6fdb0c3d38">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/tests/yajl_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="be2c07ed-3faa-33ef-ae58-d7d35f9c065d">
+		<BuildDependency Project="src/cdogs/SDL_JoystickButtonNames/SDL_joystickbuttonnames.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/cdogs/c_hashmap/c_hashmap.vcxproj"/>
+		<BuildDependency Project="src/tests/cbehave/cbehave.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cdogs.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/cwolfmap.vcxproj"/>
+		<BuildDependency Project="src/cdogs/enet/enet.vcxproj"/>
+		<BuildDependency Project="src/json/json.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/wad/wad.vcxproj"/>
+		<BuildDependency Project="src/cdogs/yajl/yajl_s.vcxproj"/>
+		<BuildDependency Project="src/cdogs/cwolfmap/zip/zip.vcxproj"/>
+	</Project>
+	<Project Path="src/cdogs/cwolfmap/zip/zip.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fea790ec-19ba-372a-a612-ab442d03717e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+</Solution>

@@ -66,6 +66,7 @@
 #include <cdogs/net_client.h>
 #include <cdogs/net_server.h>
 #include <cdogs/objs.h>
+#include <cdogs/game_state_export.h>
 #include <cdogs/pickup.h>
 
 #include "briefing_screens.h"
@@ -154,6 +155,8 @@ static void RunGameOnEnter(GameLoopData *data)
 	RunGameData *rData = data->Data;
 
 	RunGameReset(rData);
+
+	EnsureOutputDir();
 
 	CampaignSeedRandom(rData->co);
 	MapBuild(
@@ -529,7 +532,8 @@ static GameLoopResult RunGameUpdate(GameLoopData *data, LoopRunner *l)
 
 	// Disable sounds on the first frame
 	GameUpdate(rData, ticksPerFrame, data->Frames == 0 ? NULL : &gSoundDevice);
-
+	json_t *gameState = GameStateToJSON(gMission.time);
+	json_free_value(&gameState);
 	CameraUpdate(&rData->Camera, ticksPerFrame, 1000 / data->FPS);
 
 	return UPDATE_RESULT_DRAW;

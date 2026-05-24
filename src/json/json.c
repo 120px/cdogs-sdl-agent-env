@@ -1264,6 +1264,8 @@ json_unescape (const char *text)
 	size_t w;		/* write cursor */
 
 	assert (text);
+	if (result == NULL)
+		return NULL;
 
 	for (r = w = 0; text[r]; r++)
 	{
