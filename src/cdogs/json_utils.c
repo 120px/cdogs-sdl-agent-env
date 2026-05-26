@@ -47,6 +47,12 @@ void AddBoolPair(json_t *parent, const char *name, int value)
 {
 	json_insert_pair_into_object(parent, name, json_new_bool(value));
 }
+void AddFloatPair(json_t *parent, const char *name, float number)
+{
+	char buf[32];
+	snprintf(buf, sizeof buf, "%f", number);
+	json_insert_pair_into_object(parent, name, json_new_number(buf));
+}
 void AddStringPair(json_t *parent, const char *name, const char *s)
 {
 	if (!s)
@@ -75,6 +81,17 @@ void AddVec2iPair(json_t *parent, const char *name, const struct vec2i v)
 	json_insert_child(node, json_new_number(buf));
 	json_insert_pair_into_object(parent, name, node);
 }
+void AddVec2Pair(json_t *parent, const char *name, const struct vec2 v)
+{
+	json_t *node = json_new_array();
+	char buf[32];
+	sprintf(buf, "%f", v.x);
+	json_insert_child(node, json_new_number(buf));
+	sprintf(buf, "%f", v.y);
+	json_insert_child(node, json_new_number(buf));
+	json_insert_pair_into_object(parent, name, node);
+
+}
 void AddRect2iPair(json_t *parent, const char *name, const Rect2i r)
 {
 	json_t *node = json_new_array();
@@ -93,6 +110,16 @@ void AddIntArray(json_t *parent, const char *name, const CArray *a)
 {
 	json_t *node = json_new_array();
 	CA_FOREACH(int, i, *a)
+	char buf[32];
+	sprintf(buf, "%d", *i);
+	json_insert_child(node, json_new_number(buf));
+	CA_FOREACH_END()
+	json_insert_pair_into_object(parent, name, node);
+}
+void AddWeaponArray(json_t *parent, const char *name, const CArray *guns)
+{
+	json_t *node = json_new_array();
+	CA_FOREACH(int, i, *guns)
 	char buf[32];
 	sprintf(buf, "%d", *i);
 	json_insert_child(node, json_new_number(buf));

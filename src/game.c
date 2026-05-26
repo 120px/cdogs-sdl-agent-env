@@ -67,6 +67,7 @@
 #include <cdogs/net_server.h>
 #include <cdogs/objs.h>
 #include <cdogs/game_state_export.h>
+#include <cdogs/tcp_server.h>
 #include <cdogs/pickup.h>
 
 #include "briefing_screens.h"
@@ -157,6 +158,8 @@ static void RunGameOnEnter(GameLoopData *data)
 	RunGameReset(rData);
 
 	EnsureOutputDir();
+	ResetDeathLog();
+	TcpServerInit(9000);
 
 	CampaignSeedRandom(rData->co);
 	MapBuild(
@@ -269,6 +272,7 @@ static void RunGameOnExit(GameLoopData *data)
 {
 	RunGameData *rData = data->Data;
 
+	TcpServerTerminate();
 	LOG(LM_MAIN, LL_INFO, "Game finished");
 
 	// Flush events
@@ -532,8 +536,10 @@ static GameLoopResult RunGameUpdate(GameLoopData *data, LoopRunner *l)
 
 	// Disable sounds on the first frame
 	GameUpdate(rData, ticksPerFrame, data->Frames == 0 ? NULL : &gSoundDevice);
+	// EXPORT GAME STATE TO JSON FOR DEBUGGING
 	json_t *gameState = GameStateToJSON(gMission.time);
 	json_free_value(&gameState);
+
 	CameraUpdate(&rData->Camera, ticksPerFrame, 1000 / data->FPS);
 
 	return UPDATE_RESULT_DRAW;

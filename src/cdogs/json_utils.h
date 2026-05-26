@@ -37,12 +37,15 @@
 #include "vector.h"
 
 void AddIntPair(json_t *parent, const char *name, int number);
+void AddFloatPair(json_t *parent, const char *name, float number);
 void AddBoolPair(json_t *parent, const char *name, int value);
 void AddStringPair(json_t *parent, const char *name, const char *s);
 void AddColorPair(json_t *parent, const char *name, const color_t c);
 void AddVec2iPair(json_t *parent, const char *name, const struct vec2i v);
 void AddRect2iPair(json_t *parent, const char *name, const Rect2i r);
+void AddVec2Pair(json_t *parent, const char *name, const struct vec2);
 void AddIntArray(json_t *parent, const char *name, const CArray *a);
+void AddWeaponArray(json_t *parent, const char *name, const CArray *guns);
 
 void LoadBool(bool *value, json_t *node, const char *name);
 void LoadInt(int *value, json_t *node, const char *name);

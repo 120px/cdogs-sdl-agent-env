@@ -9,6 +9,8 @@
 #include "json_utils.h"
 #include "mission.h"
 #include "player.h"
+#include "log.h"
+#include "tcp_server.h"
 
 static const char *OUTPUT_PATH = "live_game_snapshots";
 
@@ -34,24 +36,137 @@ void EnsureOutputDir(void)
 	_mkdir(OUTPUT_PATH);
 }
 
+// Death event log: tracks which actor UIDs were alive last tick
+#define MAX_TRACKED_ACTORS 256
+typedef struct { int uid; bool wasAlive; } ActorAliveState;
+static ActorAliveState sAliveStates[MAX_TRACKED_ACTORS];
+static int sAliveStateCount = 0;
+
+void ResetDeathLog(void)
+{
+	sAliveStateCount = 0;
+}
+
+static bool WasAliveLastTick(const int uid)
+{
+	for (int i = 0; i < sAliveStateCount; i++)
+		if (sAliveStates[i].uid == uid)
+			return sAliveStates[i].wasAlive;
+	return true; // assume alive if not tracked yet
+}
+
+static void UpdateAliveState(const int uid, const bool isAlive)
+{
+	for (int i = 0; i < sAliveStateCount; i++)
+	{
+		if (sAliveStates[i].uid == uid)
+		{
+			sAliveStates[i].wasAlive = isAlive;
+			return;
+		}
+	}
+	if (sAliveStateCount < MAX_TRACKED_ACTORS)
+	{
+		sAliveStates[sAliveStateCount].uid = uid;
+		sAliveStates[sAliveStateCount].wasAlive = isAlive;
+		sAliveStateCount++;
+	}
+}
+
 json_t *GameStateToJSON(const int tick)
 {
 	json_t *root = json_new_object();
 
 	json_t *actorArr = json_new_array();
+	json_t *deathArr = json_new_array();
 	CA_FOREACH(const TActor, a, gActors)
 		if (!a->isInUse)
 			continue;
+		const bool isAlive = a->dead == 0;
+		const bool justDied = WasAliveLastTick(a->uid) && !isAlive;
+		UpdateAliveState(a->uid, isAlive);
+		if (justDied)
+		{
+			json_t *death = json_new_object();
+			AddIntPair(death, "uid", a->uid);
+			AddIntPair(death, "PlayerUID", a->PlayerUID);
+			if (a->PlayerUID != -1)
+			{
+				const PlayerData *p = PlayerDataGetByUID(a->PlayerUID);
+				if (p) AddStringPair(death, "playerName", p->name);
+			}
+			json_insert_child(deathArr, death);
+		}
 		json_t *actor = json_new_object();
+		// JSON: Identification
 		AddIntPair(actor, "uid", a->uid);
+		AddIntPair(actor, "charId", a->charId);
+		AddIntPair(actor, "PlayerUID", a->PlayerUID);
+		AddIntPair(actor, "pilotUID", a->pilotUID);
+		// JSON: Player stats
 		AddIntPair(actor, "health", a->health);
+		AddIntPair(actor, "dead", a->dead);
+		
+		//JSON: Guns
+		json_t *gunsArr = json_new_array();
+		for (int gi = 0; gi < MAX_WEAPONS; gi++)
+		{
+			const Weapon *w = &a->guns[gi];
+			if (w->Gun == NULL)
+				continue;
+			json_t *gun = json_new_object();
+			AddStringPair(gun, "name", w->Gun->name);
+			json_insert_child(gunsArr, gun);
+		}
+		json_insert_pair_into_object(actor, "guns", gunsArr);
+		AddIntArray(actor, "ammo", &a->ammo);
+		AddIntPair(actor, "gun_current", a->gunIndex);
+		AddIntPair(actor, "gun_last", a->lastGunIdx);
+
+		// JSON: Position and movement
+		AddVec2Pair(actor, "pos", a->Pos);
+		AddVec2Pair(actor, "move_vel", a->MoveVel);
+		AddIntPair(actor, "direction", a->direction);
+		AddFloatPair(actor, "direction_radians", a->DrawRadians);
+
+		// JSON: Status effects
+		AddIntPair(actor, "flamed", a->flamed);
+		AddIntPair(actor, "poisoned", a->poisoned);
+		AddIntPair(actor, "petrified", a->petrified);
+		AddIntPair(actor, "confused", a->confused);
+
+		AddIntPair(actor, "flags", a->flags);
+		AddIntPair(actor, "accumulated_damage", a->accumulatedDamage);
+		AddIntPair(actor, "damage_cooldown_ticks", a->damageCooldownTicks);
+
+		// JSON: PlayerData (human players only)
+		if (a->PlayerUID != -1)
+		{
+			const PlayerData *p = PlayerDataGetByUID(a->PlayerUID);
+			if (p)
+			{
+				json_t *player = json_new_object();
+				AddStringPair(player, "name", p->name);
+				AddIntPair(player, "lives", p->Lives);
+				AddIntPair(player, "score", p->Stats.Score);
+				AddIntPair(player, "kills", (int)p->Stats.Kills);
+				AddIntPair(player, "suicides", (int)p->Stats.Suicides);
+				AddIntPair(player, "friendlies", (int)p->Stats.Friendlies);
+				json_insert_pair_into_object(actor, "player", player);
+			}
+		}
+
 		// add more fields as needed
+		//LOG(LM_MAIN, LL_INFO, "actor uid=%d pos=(%.1f,%.1f) dir=%d rads=%.1f",
+		//	a->uid, a->Pos.x, a->Pos.y, (int)a->direction, a->DrawRadians);
 		json_insert_child(actorArr, actor);
 	CA_FOREACH_END()
 	json_insert_pair_into_object(root, "actors", actorArr);
+	json_insert_pair_into_object(root, "deaths", deathArr);
 	AddIntPair(root, "tick", tick);
 
-	WriteSnapshotToJsonFile(root);
+	//WriteSnapshotToJsonFile(root);
+	TcpServerSendJSON(root);
 
 	return root;
 }
