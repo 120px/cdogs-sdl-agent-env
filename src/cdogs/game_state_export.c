@@ -73,9 +73,63 @@ static void UpdateAliveState(const int uid, const bool isAlive)
 	}
 }
 
+json_t *MapGridToJson(void)
+{
+	json_t *root = json_new_object();
+	AddStringPair(root, "type", "map_init");
+	AddIntPair(root, "width", gMap.Size.x);
+	AddIntPair(root, "height", gMap.Size.y);
+	AddIntPair(root, "tile_height", TILE_HEIGHT);
+	AddIntPair(root, "tile_width", TILE_WIDTH);
+	AddIntPair(root, "num_explorable_tiles", gMap.NumExplorableTiles);
+
+	json_t *rows = json_new_array();
+
+	for (int y = 0; y < gMap.Size.y; y++)
+	{
+		json_t *row = json_new_array();
+		for (int x = 0; x < gMap.Size.x; x++)
+		{
+			const Tile *t = MapGetTile(&gMap, svec2i(x, y));
+			const char *type = "unknown";
+			if (t->Class->Type == TILE_CLASS_WALL)
+				type = "wall";
+			else if (t->Class->Type == TILE_CLASS_FLOOR)
+				type = t->Class->IsRoom ? "room" : "floor";
+			else if (t->Class->Type == TILE_CLASS_DOOR)
+				type = "door";
+			json_insert_child(row, json_new_string(type));
+		}
+		json_insert_child(rows, row);
+	}
+	// Print map grid for debugging
+	for (int y = 0; y < gMap.Size.y; y++)
+	{
+		for (int x = 0; x < gMap.Size.x; x++)
+		{
+			const Tile *t = MapGetTile(&gMap, svec2i(x, y));
+			char c = '?';
+			switch (t->Class->Type)
+			{
+			case TILE_CLASS_WALL:  c = '#'; break;
+			case TILE_CLASS_DOOR:  c = '+'; break;
+			case TILE_CLASS_FLOOR: c = t->Class->IsRoom ? '.' : ' '; break;
+			default: break;
+			}
+			putchar(c);
+		}
+		putchar('\n');
+	}
+
+	json_insert_pair_into_object(root, "tiles", rows);
+	TcpServerSendJSON(root);
+	return root;
+}
+
 json_t *GameStateToJSON(const int tick)
 {
 	json_t *root = json_new_object();
+	AddStringPair(root, "type", "game_state");
 
 	json_t *actorArr = json_new_array();
 	json_t *deathArr = json_new_array();

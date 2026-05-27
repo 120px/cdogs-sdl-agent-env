@@ -167,6 +167,11 @@ static void RunGameOnEnter(GameLoopData *data)
 		rData->m->index, rData->co->Entry.Mode,
 		&rData->co->Setting.characters);
 
+	// JSON: send map data to clients
+	json_t *mapGrid = MapGridToJson();
+	TcpServerSendJSON(mapGrid);
+	json_free_value(&mapGrid);
+
 	// Seed random if PVP mode (otherwise players will always spawn in same
 	// position)
 	if (IsPVP(rData->co->Entry.Mode))
